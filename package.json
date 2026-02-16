@@ -1,0 +1,19 @@
+{
+    "name": "vander-key-store",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^5.4.21"
+    },
+    "description": "",
+    "main": "main.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vander Hub | Access Exchange</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="glow-bg"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">
+            <i data-lucide="shield-check"></i>
+            <span>Vander Hub <b>Keys</b></span>
+        </div>
+        <div class="nav-links">
+            <a href="#store">Pricing</a>
+            <a href="#support" class="support-btn">Neural Chat</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="live-feed">
+            <div class="feed-container">
+                <div class="feed-dot"></div>
+                <span id="live-text">Recent Purchase: User 'VanderDev' bought a Lifetime Key (2m ago)</span>
+            </div>
+        </div>
+
+        <header class="hero">
+            <h1 class="glitch-text">Elevate Your Execution</h1>
+            <p>Purchase ultimate access to the Vander Lua Code Defender ecosystem. Instant key delivery, lifetime
+                support.</p>
+        </header>
+
+        <section id="store" class="pricing-grid">
+            <div class="key-card">
+                <div class="key-type">Standard</div>
+                <div class="price">7 Days</div>
+                <ul class="features">
+                    <li><i data-lucide="check"></i> 1 Week Access</li>
+                    <li><i data-lucide="check"></i> All Hub Scripts</li>
+                    <li><i data-lucide="check"></i> Standard Protection</li>
+                </ul>
+                <button class="buy-btn" onclick="openPayment('7 Days')">Purchase Access</button>
+            </div>
+
+            <div class="key-card featured">
+                <div class="badge">Most Popular</div>
+                <div class="key-type">Enthusiast</div>
+                <div class="price">30 Days</div>
+                <ul class="features">
+                    <li><i data-lucide="check"></i> 1 Month Access</li>
+                    <li><i data-lucide="check"></i> Priority Support</li>
+                    <li><i data-lucide="check"></i> Early Beta Features</li>
+                    <li><i data-lucide="check"></i> Premium Obfuscation</li>
+                </ul>
+                <button class="buy-btn" onclick="openPayment('30 Days')">Purchase Access</button>
+            </div>
+
+            <div class="key-card">
+                <div class="key-type">Lifetime</div>
+                <div class="price">Infinite Access</div>
+                <ul class="features">
+                    <li><i data-lucide="check"></i> Eternal License</li>
+                    <li><i data-lucide="check"></i> Exclusive Scripts</li>
+                    <li><i data-lucide="check"></i> Admin Panel Access</li>
+                    <li><i data-lucide="check"></i> Dedicated Manager</li>
+                </ul>
+                <button class="buy-btn" onclick="openPayment('Lifetime')">Purchase Access</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Neural Chat Component -->
+    <div id="chat-orb" class="chat-orb" onclick="toggleChat()">
+        <i data-lucide="message-square"></i>
+    </div>
+
+    <div id="chat-window" class="chat-window hidden">
+        <div class="chat-header">
+            <div class="status-dot"></div>
+            <span>Vander Support AI</span>
+            <i data-lucide="x" class="close-chat" onclick="toggleChat()"></i>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="msg bot">Hello! I am the Vander Neural Assistant. How can I help you acquire your access key
+                today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Type a message..."
+                onkeydown="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()"><i data-lucide="send"></i></button>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal hidden">
+        <div class="modal-content glass">
+            <i data-lucide="x" class="close-modal" onclick="closePayment()"></i>
+            <h2>Complete Purchase</h2>
+            <p id="selected-plan">Plan: 30 Days Access</p>
+
+            <div class="payment-options">
+                <div class="pay-option" onclick="selectPay('Crypto')">
+                    <i data-lucide="bitcoin"></i>
+                    <span>Crypto</span>
+                </div>
+                <div class="pay-option" onclick="selectPay('PayPal')">
+                    <i data-lucide="wallet"></i>
+                    <span>PayPal</span>
+                </div>
+                <div class="pay-option special" onclick="selectPay('Brainrot')">
+                    <i data-lucide="frown"></i>
+                    <span>Pay with Brainrots</span>
+                    <small>Min: Nuke Dino</small>
+                </div>
+            </div>
+
+            <div id="payment-details" class="payment-details hidden">
+                <p id="pay-instruction"></p>
+                <div class="input-group">
+                    <input type="text" placeholder="Transaction ID / Roblox User" id="tx-id">
+                    <button class="btn-primary" onclick="confirmPayment()">Verify Payment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer
+        style="margin-top: 100px; padding: 40px 8%; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+        <p>&copy; 2026 Vander Hub Neural Systems. All rights reserved.</p>
+        <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px;">
+            <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+            <a href="#" style="color: inherit; text-decoration: none;">Privacy Protocol</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
