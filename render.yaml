@@ -1,0 +1,5 @@
+services:
+  - type: static
+    name: vander-key-store
+    env: static
+    publishPath: ./
