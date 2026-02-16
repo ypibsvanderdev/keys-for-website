@@ -55,9 +55,11 @@
             </div>
 
             <div class="key-card featured">
-                <div class="badge">Most Popular</div>
-                <div class="key-type">Enthusiast</div>
-                <div class="price">30 Days</div>
+                <div class="badge">Value Plan</div>
+                <div class="key-type">Standard</div>
+                <div class="price">$5.00</div>
+                <div style="margin-top:-20px; font-size:14px; color:var(--text-secondary); margin-bottom:30px;">30 Days
+                    Access</div>
                 <ul class="features">
                     <li><i data-lucide="check"></i> 1 Month Access</li>
                     <li><i data-lucide="check"></i> Priority Support</li>
@@ -69,7 +71,9 @@
 
             <div class="key-card">
                 <div class="key-type">Lifetime</div>
-                <div class="price">Infinite Access</div>
+                <div class="price">$50.00</div>
+                <div style="margin-top:-20px; font-size:14px; color:var(--text-secondary); margin-bottom:30px;">Infinite
+                    Access</div>
                 <ul class="features">
                     <li><i data-lucide="check"></i> Eternal License</li>
                     <li><i data-lucide="check"></i> Exclusive Scripts</li>
@@ -88,13 +92,14 @@
 
     <div id="chat-window" class="chat-window hidden">
         <div class="chat-header">
-            <div class="status-dot"></div>
-            <span>Vander Support AI</span>
+            <div id="queue-status" class="status-dot"></div>
+            <span id="session-label">Direct Channel with Yahia</span>
             <i data-lucide="x" class="close-chat" onclick="toggleChat()"></i>
         </div>
         <div id="chat-messages" class="chat-messages">
-            <div class="msg bot">Hello! I am the Vander Neural Assistant. How can I help you acquire your access key
-                today?</div>
+            <div class="msg system">Vander Chat Protocol 4.0: Searching for active session...</div>
+            <div id="queue-msg" class="msg bot">Welcome. Once a session begins, you will be connected directly to Yahia.
+                Please do not close this window.</div>
         </div>
         <div class="chat-input-area">
             <input type="text" id="chat-input" placeholder="Type a message..."

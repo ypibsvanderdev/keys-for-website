@@ -10,6 +10,7 @@ const activities = [
 let activityIndex = 0;
 function rotateActivity() {
     const text = document.getElementById('live-text');
+    if (!text) return;
     activityIndex = (activityIndex + 1) % activities.length;
     text.style.opacity = 0;
     setTimeout(() => {
@@ -19,17 +20,41 @@ function rotateActivity() {
 }
 setInterval(rotateActivity, 5000);
 
-// Neural Chat Logic
+// Direct Chat Logic (No AI)
+let isSessionActive = false;
+let isBusy = false; // Yahia can mark himself as busy
+
 function toggleChat() {
     const chatWindow = document.getElementById('chat-window');
     chatWindow.classList.toggle('hidden');
+
+    // Auto-connect if opening for the first time
+    if (!isSessionActive && !chatWindow.classList.contains('hidden')) {
+        startNeuralSession();
+    }
+}
+
+function startNeuralSession() {
+    const msgArea = document.getElementById('chat-messages');
+    const status = document.getElementById('queue-status');
+
+    setTimeout(() => {
+        const sysMsg = document.createElement('div');
+        sysMsg.className = 'msg system';
+        sysMsg.innerText = "SESSION ESTABLISHED: ENCRYPTED CHANNEL OPEN";
+        msgArea.appendChild(sysMsg);
+
+        status.classList.add('busy');
+        isSessionActive = true;
+        msgArea.scrollTop = msgArea.scrollHeight;
+    }, 2000);
 }
 
 function sendMessage() {
     const input = document.getElementById('chat-input');
     const msgArea = document.getElementById('chat-messages');
 
-    if (!input.value.trim()) return;
+    if (!input.value.trim() || !isSessionActive) return;
 
     // User Message
     const userMsg = document.createElement('div');
@@ -37,31 +62,11 @@ function sendMessage() {
     userMsg.innerText = input.value;
     msgArea.appendChild(userMsg);
 
-    const userText = input.value.toLowerCase();
     input.value = '';
     msgArea.scrollTop = msgArea.scrollHeight;
 
-    // Bot Response
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'msg bot';
-
-        let response = "I'm processing your request. Please select a key plan to proceed with payment.";
-
-        if (userText.includes('price') || userText.includes('key')) {
-            response = "We offer 7-day, 30-day, and Lifetime keys. Select 'Purchase Access' on the main page to see the automated payment gateway.";
-        } else if (userText.includes('brainrot') || userText.includes('pet') || userText.includes('dino')) {
-            response = "BRAINROT EXCHANGE ACTIVE: We accept Nuke Dino as minimum payment. Once you click 'Pay with Brainrots' in the checkout modal, enter your Roblox ID and I will generate a trade link for you.";
-        } else if (userText.includes('status') || userText.includes('work')) {
-            response = "All systems operational. Keys are delivered instantly after payment verification.";
-        } else if (userText.includes('hello') || userText.includes('hi')) {
-            response = "Welcome to the Neural Exchange. I'm here to facilitate your access to Vander Hub.";
-        }
-
-        botMsg.innerText = response;
-        msgArea.appendChild(botMsg);
-        msgArea.scrollTop = msgArea.scrollHeight;
-    }, 1000);
+    // NOTE: In a real app, this would send to a server/Discord. 
+    // Since there is no AI, no automatic response happens here.
 }
 
 // Payment Logic
@@ -83,10 +88,14 @@ function selectPay(method) {
     const instruction = document.getElementById('pay-instruction');
     details.classList.remove('hidden');
 
+    let price = "5.00";
+    if (activePlan === 'Lifetime') price = "50.00";
+    if (activePlan === '7 Days') price = "2.00";
+
     if (method === 'Crypto') {
-        instruction.innerHTML = "Send <b>$15.00</b> worth of BTC to:<br><code style='color:var(--accent)'>bc1qxfv982hjs039485jns039485</code>";
+        instruction.innerHTML = `Send <b>$${price}</b> worth of BTC to:<br><code style='color:var(--accent)'>bc1qxfv982hjs039485jns039485</code>`;
     } else if (method === 'PayPal') {
-        instruction.innerHTML = "Send <b>$15.00</b> via Friends & Family to:<br><code style='color:var(--accent)'>vander.payments@gmail.com</code>";
+        instruction.innerHTML = `Send <b>$${price}</b> via Friends & Family to:<br><code style='color:var(--accent)'>vander.payments@gmail.com</code>`;
     } else if (method === 'Brainrot') {
         instruction.innerHTML = "<b>PAY WITH BRAINROTS</b><br>Minimum item: <span style='color:var(--accent)'>Nuke Dino</span><br>Enter your Roblox username below and wait for a trade request.";
     }
@@ -103,24 +112,16 @@ function confirmPayment() {
     const chatHeader = chatWindow.querySelector('.chat-header span');
     const msgArea = document.getElementById('chat-messages');
 
-    chatHeader.innerText = "Direct Channel | Yahia";
+    chatHeader.innerText = "Secure Channel | Yahia";
     chatWindow.classList.remove('hidden');
 
     const systemMsg = document.createElement('div');
-    systemMsg.className = 'msg bot';
-    systemMsg.style.borderColor = 'var(--accent)';
-    systemMsg.style.borderWidth = '1px';
-    systemMsg.style.borderStyle = 'solid';
-    systemMsg.innerText = "APPLICATION RECEIVED: You are now in a direct channel with Yahia. Please wait for a response regarding your key.";
+    systemMsg.className = 'msg system';
+    systemMsg.innerText = "URGENT: YAHIA HAS BEEN NOTIFIED OF YOUR PURCHASE";
     msgArea.appendChild(systemMsg);
 
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'msg bot';
-        botMsg.innerText = "Yahia is reviewing your application. Leave your Discord or Roblox ID if you haven't already.";
-        msgArea.appendChild(botMsg);
-        msgArea.scrollTop = msgArea.scrollHeight;
-    }, 3000);
+    isSessionActive = true;
+    msgArea.scrollTop = msgArea.scrollHeight;
 }
 
 // Close modal on click outside

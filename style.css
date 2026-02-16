@@ -539,6 +539,28 @@ body {
     cursor: pointer;
 }
 
+@keyframes pulse-red {
+    0% {
+        background: #f85149;
+        box-shadow: 0 0 0px #f85149;
+    }
+
+    50% {
+        background: #ff7b72;
+        box-shadow: 0 0 10px #f85149;
+    }
+
+    100% {
+        background: #f85149;
+        box-shadow: 0 0 0px #f85149;
+    }
+}
+
+.status-dot.busy {
+    background: #f85149;
+    animation: pulse-red 2s infinite;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
