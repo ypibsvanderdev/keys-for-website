@@ -1,5 +1,13 @@
 services:
-  - type: static
+  - type: web
     name: vander-key-store
-    env: static
-    publishPath: ./
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: DOMAIN
+        value: https://vander-key-store.onrender.com

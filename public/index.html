@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vander Defender | Key Store</title>
+    <meta name="description"
+        content="Purchase access keys for Vander Lua Code Defender. Lifetime and monthly plans with instant key delivery via Stripe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glow-bg"></div>
+    <div class="grid-bg"></div>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="glass-nav" id="main-nav">
+        <div class="logo">
+            <div class="logo-icon">
+                <i data-lucide="shield-check"></i>
+            </div>
+            <span>Vander <b>Defender</b></span>
+        </div>
+        <div class="nav-links">
+            <a href="#pricing">Pricing</a>
+            <a href="https://vander-lua-code-defender.onrender.com" target="_blank" class="nav-accent">Launch App →</a>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <header class="hero">
+        <div class="hero-badge">
+            <i data-lucide="zap"></i>
+            <span>Instant Key Delivery</span>
+        </div>
+        <h1>Protect Your Code.<br><span class="gradient-text">Own Your Shield.</span></h1>
+        <p>Purchase an access key for the Vander Lua Code Defender ecosystem.
+            Secure Stripe checkout. One-time HWID key delivered instantly after payment.</p>
+        <div class="hero-cta">
+            <a href="#pricing" class="btn-hero">View Plans</a>
+            <a href="#how-it-works" class="btn-hero-outline">How It Works</a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-value">500+</span>
+                <span class="stat-label">Active Users</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-value">99.9%</span>
+                <span class="stat-label">Uptime</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-value">∞</span>
+                <span class="stat-label">Lifetime Access</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== PRICING ========== -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-header">
+            <span class="section-tag">PRICING</span>
+            <h2>Choose Your Plan</h2>
+            <p>One payment. One key. Full protection.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- MONTHLY PLAN -->
+            <div class="plan-card" id="plan-monthly">
+                <div class="plan-header">
+                    <div class="plan-icon monthly-icon">
+                        <i data-lucide="calendar"></i>
+                    </div>
+                    <span class="plan-name">Monthly</span>
+                </div>
+                <div class="plan-price">
+                    <span class="currency">$</span>
+                    <span class="amount">5</span>
+                    <span class="period">/month</span>
+                </div>
+                <ul class="plan-features">
+                    <li><i data-lucide="check-circle-2"></i> 30 Days Access</li>
+                    <li><i data-lucide="check-circle-2"></i> One-Time HWID Key</li>
+                    <li><i data-lucide="check-circle-2"></i> Full Script Protection</li>
+                    <li><i data-lucide="check-circle-2"></i> Shield Lab Access</li>
+                    <li><i data-lucide="check-circle-2"></i> Priority Support</li>
+                </ul>
+                <button class="plan-btn" onclick="checkout('monthly')" id="btn-monthly">
+                    <i data-lucide="credit-card"></i>
+                    <span>Purchase Monthly</span>
+                </button>
+            </div>
+
+            <!-- LIFETIME PLAN -->
+            <div class="plan-card featured" id="plan-lifetime">
+                <div class="featured-badge">BEST VALUE</div>
+                <div class="plan-header">
+                    <div class="plan-icon lifetime-icon">
+                        <i data-lucide="infinity"></i>
+                    </div>
+                    <span class="plan-name">Lifetime</span>
+                </div>
+                <div class="plan-price">
+                    <span class="currency">$</span>
+                    <span class="amount">50</span>
+                    <span class="period">one-time</span>
+                </div>
+                <ul class="plan-features">
+                    <li><i data-lucide="check-circle-2"></i> <b>Permanent Access</b></li>
+                    <li><i data-lucide="check-circle-2"></i> One-Time HWID Key</li>
+                    <li><i data-lucide="check-circle-2"></i> Full Script Protection</li>
+                    <li><i data-lucide="check-circle-2"></i> Shield Lab Access</li>
+                    <li><i data-lucide="check-circle-2"></i> Premium Obfuscation</li>
+                    <li><i data-lucide="check-circle-2"></i> Exclusive Scripts</li>
+                    <li><i data-lucide="check-circle-2"></i> Dedicated Support</li>
+                </ul>
+                <button class="plan-btn plan-btn-featured" onclick="checkout('lifetime')" id="btn-lifetime">
+                    <i data-lucide="credit-card"></i>
+                    <span>Purchase Lifetime</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" class="how-section">
+        <div class="section-header">
+            <span class="section-tag">HOW IT WORKS</span>
+            <h2>Three Simple Steps</h2>
+            <p>From purchase to protection in under 60 seconds.</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon"><i data-lucide="credit-card"></i></div>
+                <h3>Pay with Stripe</h3>
+                <p>Choose your plan and complete a secure checkout via Stripe. Cards, Apple Pay, Google Pay accepted.
+                </p>
+            </div>
+            <div class="step-connector"><i data-lucide="arrow-right"></i></div>
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon"><i data-lucide="key"></i></div>
+                <h3>Get Your Key</h3>
+                <p>A unique one-time HWID key is generated instantly and displayed on your success page.</p>
+            </div>
+            <div class="step-connector"><i data-lucide="arrow-right"></i></div>
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon"><i data-lucide="shield-check"></i></div>
+                <h3>Activate & Protect</h3>
+                <p>Enter your key on the Vander Lua Code Defender site. It locks to your HWID permanently.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECURITY BANNER ========== -->
+    <section class="security-banner">
+        <div class="banner-content">
+            <div class="banner-icon"><i data-lucide="lock"></i></div>
+            <div class="banner-text">
+                <h3>Secured by Stripe</h3>
+                <p>All payments are processed through Stripe's PCI-compliant infrastructure. We never store your card
+                    details.</p>
+            </div>
+            <div class="banner-logos">
+                <span class="pay-badge">💳 Visa</span>
+                <span class="pay-badge">💳 Mastercard</span>
+                <span class="pay-badge"> Apple Pay</span>
+                <span class="pay-badge">🟢 Google Pay</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i data-lucide="shield-check"></i>
+                <span>Vander Defender</span>
+            </div>
+            <p>&copy; 2026 Vander Hub Neural Systems. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="https://vander-lua-code-defender.onrender.com" target="_blank">Launch Defender</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== SUCCESS MODAL (shown after payment) ========== -->
+    <div id="success-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></div>
+            <div class="success-animation">
+                <div class="success-circle">
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+            <h2>Payment Successful!</h2>
+            <p class="modal-subtitle">Your one-time HWID key has been generated</p>
+
+            <div class="key-display">
+                <code id="generated-key">Loading...</code>
+                <button class="copy-key-btn" onclick="copyKey()" id="copy-btn">
+                    <i data-lucide="copy"></i>
+                </button>
+            </div>
+            <p class="key-warning">
+                <i data-lucide="alert-triangle"></i>
+                <span>Save this key! It is <b>one-time use</b> and locks to your hardware ID.</span>
+            </p>
+
+            <div class="modal-info">
+                <div class="info-row">
+                    <span>Plan</span>
+                    <span id="purchased-plan">—</span>
+                </div>
+                <div class="info-row">
+                    <span>Status</span>
+                    <span class="status-active">Active</span>
+                </div>
+            </div>
+
+            <a href="https://vander-lua-code-defender.onrender.com" target="_blank" class="modal-cta">
+                <i data-lucide="external-link"></i>
+                Go to Vander Defender & Activate Key
+            </a>
+        </div>
+    </div>
+
+    <!-- ========== LOADING OVERLAY ========== -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Connecting to Stripe...</p>
+    </div>
+
+    <script src="main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
